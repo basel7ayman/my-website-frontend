@@ -3,13 +3,16 @@ import Filter from "./Filter";
 import SearchResult from "./SearchResult";
 import { Skeleton } from "@/components/ui/skeleton";
 import { useGetSearchCourseQuery } from "@/features/api/courseApi";
-import { Link, useSearchParams } from "react-router-dom";
-import { AlertCircle } from "lucide-react";
+import { Link, useSearchParams, useNavigate } from "react-router-dom";
+import { AlertCircle, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 
 const SearchPage = () => {
-  const [searchParams] = useSearchParams();
-  const query = searchParams.get("query");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+  const query = searchParams.get("query") || "";
+  const [searchValue, setSearchValue] = useState(query);
   const [selectedCategories, setSelectedCatgories] = useState([]);
   const [sortByPrice, setSortByPrice] = useState("");
 
@@ -26,16 +29,50 @@ const SearchPage = () => {
   const handleFilterChange = (categories, price) => {
     setSelectedCatgories(categories);
     setSortByPrice(price);
-  }
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchParams({ query: searchValue });
+  };
+
+  const handleClear = () => {
+    setSearchValue("");
+    setSearchParams({ query: "" });
+  };
+
   return (
     <div className="max-w-7xl mx-auto p-4 md:p-8">
-      <div className="my-6">
-        <h1 className="font-bold text-xl md:text-2xl">result for "{query}"</h1>
-        <p>
-          Showing results for{""}
-          <span className="text-blue-800 font-bold italic">{query}</span>
-        </p>
-      </div>
+      {/* Search Bar */}
+      <form
+        onSubmit={handleSearch}
+        className="flex items-center w-full max-w-2xl mx-auto bg-white/80 dark:bg-[#181c27] rounded-full shadow-lg overflow-hidden border border-gray-300 dark:border-gray-700 mb-8"
+      >
+        <Input
+          type="text"
+          value={searchValue}
+          onChange={(e) => setSearchValue(e.target.value)}
+          placeholder="Search Courses"
+          className="flex-grow border-none focus-visible:ring-0 px-6 py-4 text-gray-900 dark:text-gray-100 bg-transparent placeholder-gray-400 rounded-l-full"
+        />
+        {searchValue && (
+          <button
+            type="button"
+            onClick={handleClear}
+            className="px-2 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 focus:outline-none"
+            aria-label="Clear search"
+          >
+            <X size={24} />
+          </button>
+        )}
+        <Button
+          type="submit"
+          className="h-full bg-[hsl(231,53%,55%)] text-white px-8 py-4 rounded-r-full font-bold transition-colors duration-200 hover:bg-[hsl(231,53%,45%)]"
+          style={{ minHeight: "3.5rem" }}
+        >
+          Search
+        </Button>
+      </form>
       <div className="flex flex-col md:flex-row gap-10">
         <Filter handleFilterChange={handleFilterChange}/>
         <div className="flex-1">

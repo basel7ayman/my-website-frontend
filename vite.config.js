@@ -9,6 +9,6 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
-  base: '/my-website-frontend/',
+  base: process.env.NODE_ENV === "production" ? "/my-website-frontend/" : "/",
 })
 

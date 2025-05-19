@@ -16,7 +16,7 @@ const HeroSection = () => {
 
   return (
     <>
-      <div className="relative py-24 px-4 text-center overflow-hidden">
+      <div className="relative bg-[hsl(231,53%,55%)] dark:bg-[hsl(231,33%,45%)] py-24 px-4 text-center">
         {/* Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-br from-[hsl(231,53%,55%)] via-blue-700/80 to-[hsl(231,33%,45%)] opacity-90 pointer-events-none z-0" />
         <div className="max-w-5xl mx-auto relative z-10">
@@ -63,18 +63,19 @@ const HeroSection = () => {
       <div className="flex justify-center bg-white dark:bg-gray-900 py-8 shadow-md">
         <form
           onSubmit={searchHandler}
-          className="flex items-center w-full max-w-2xl mx-auto bg-gray-100 dark:bg-gray-800 rounded-full shadow-lg overflow-hidden px-4"
+          className="flex items-center w-full max-w-2xl mx-auto bg-white/80 dark:bg-[#181c27] rounded-full shadow-lg overflow-hidden border border-gray-300 dark:border-gray-700"
         >
           <Input
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Search Courses"
-            className="flex-grow border-none focus-visible:ring-0 px-6 py-4 text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 bg-transparent"
+            className="flex-grow border-none focus-visible:ring-0 px-6 py-4 text-gray-900 dark:text-gray-100 bg-transparent placeholder-gray-400 rounded-l-full"
           />
           <Button
             type="submit"
-            className="bg-[hsl(231,53%,55%)] dark:bg-[hsl(231,33%,45%)] text-white px-8 py-4 rounded-r-full hover:bg-[hsl(231,53%,45%)] dark:hover:bg-[hsl(231,33%,55%)] text-lg"
+            className="h-full bg-[hsl(231,53%,55%)] text-white px-8 py-4 rounded-r-full font-bold transition-colors duration-200 hover:bg-[hsl(231,53%,45%)]"
+            style={{ minHeight: "3.5rem" }}
           >
             Search
           </Button>

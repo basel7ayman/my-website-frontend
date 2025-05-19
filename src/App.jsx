@@ -32,6 +32,8 @@ import GamificationPage from "./pages/GamificationPage";
 import { Provider } from "react-redux";
 import { appStore } from "./app/store";
 
+const BASENAME = import.meta.env.PROD ? "/my-website-frontend" : "/";
+
 const appRouter = createBrowserRouter([
   {
     path: "/",
@@ -43,6 +45,19 @@ const appRouter = createBrowserRouter([
         element:(
           <ErrorPage/>
         )
+      },
+      {
+        path: "/my-website-frontend",
+        element: (
+          <>
+            <HeroSection />
+            <div className="container mx-auto px-4 py-12">
+              <h2 className="text-3xl font-bold mb-8 text-center text-[hsl(231,53%,55%)]">Course HUB Featured Courses</h2>
+              <Courses />
+            </div>
+          </>
+        ),
+
       },
       {
         path: "/",
@@ -172,7 +187,7 @@ const appRouter = createBrowserRouter([
       },
     ],
   },
-]);
+], { basename: BASENAME });
 
 function App() {
   return (

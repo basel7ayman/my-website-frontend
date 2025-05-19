@@ -63,7 +63,7 @@ const HeroSection = () => {
       <div className="flex justify-center bg-white dark:bg-gray-900 py-8 shadow-md">
         <form
           onSubmit={searchHandler}
-          className="flex items-center w-full max-w-2xl mx-auto bg-white/80 dark:bg-[#181c27] rounded-full shadow-lg overflow-hidden border border-gray-300 dark:border-gray-700"
+          className="flex items-center w-full max-w-2xl h-12 mx-auto bg-white/80 dark:bg-[#181c27] rounded-full shadow-lg overflow-hidden border border-gray-300 dark:border-gray-700"
         >
           <Input
             type="text"

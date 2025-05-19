@@ -46,7 +46,7 @@ const SearchPage = () => {
       {/* Search Bar */}
       <form
         onSubmit={handleSearch}
-        className="flex items-center w-full max-w-2xl mx-auto bg-white/80 dark:bg-[#181c27] rounded-full shadow-lg overflow-hidden border border-gray-300 dark:border-gray-700 mb-8"
+        className="flex items-center w-full max-w-2xl mx-auto bg-white/80 dark:bg-[#181c27] rounded-full shadow-lg overflow-hidden border border-gray-300 dark:border-gray-700 mb-8 h-12"
       >
         <Input
           type="text"

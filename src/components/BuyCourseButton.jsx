@@ -3,10 +3,12 @@ import { Button } from "./ui/button";
 import { useCreateCheckoutSessionMutation } from "@/features/api/purchaseApi";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useLoadUserQuery } from "@/features/api/authApi";
 
 const BuyCourseButton = ({ courseId }) => {
   const [createCheckoutSession, {data, isLoading, isSuccess, isError, error }] =
     useCreateCheckoutSessionMutation();
+  const { refetch } = useLoadUserQuery();
 
   const purchaseCourseHandler = async () => {
     await createCheckoutSession(courseId);
@@ -18,12 +20,13 @@ const BuyCourseButton = ({ courseId }) => {
         window.location.href = data.url; // Redirect to stripe checkout url
        }else{
         toast.error("Invalid response from server.")
+        refetch();
        }
     } 
     if(isError){
       toast.error(error?.data?.message || "Failed to create checkout session")
     }
-  },[data, isSuccess, isError, error])
+  },[data, isSuccess, isError, error, refetch])
 
   return (
     <Button

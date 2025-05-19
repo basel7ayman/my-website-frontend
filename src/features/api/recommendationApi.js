@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const RECOMMENDATION_API = "http://localhost:9000";
+const RECOMMENDATION_API = "http://localhost:8080/api/v1/recommendation";
 
 export const recommendationApi = createApi({
   reducerPath: "recommendationApi",

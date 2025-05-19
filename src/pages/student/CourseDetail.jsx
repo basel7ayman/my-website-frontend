@@ -76,7 +76,8 @@ const CourseDetail = () => {
             </CardHeader>
             <CardContent>
               <div
-                className="text-sm text-gray-600 dark:text-gray-300 prose dark:prose-invert max-w-none"
+                className="text-sm text-gray-600 dark:text-gray-300 prose dark:prose-invert max-w-none break-words overflow-x-auto"
+                style={{ wordBreak: 'break-word' }}
                 dangerouslySetInnerHTML={{ __html: course.description }}
               />
             </CardContent>
@@ -108,7 +109,7 @@ const CourseDetail = () => {
           </Card>
         </div>
         <div className="w-full lg:w-1/3">
-          <Card className="dark:bg-gray-800 sticky top-4">
+          <Card className="dark:bg-gray-800 sticky top-24">
             <CardContent className="p-4 flex flex-col">
               <div className="w-full aspect-video mb-4 rounded-lg overflow-hidden">
                 <ReactPlayer

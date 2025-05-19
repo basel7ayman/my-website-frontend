@@ -26,7 +26,12 @@ export default function CourseRecommendationForm() {
     careerGoals: '',
     priorExperience: '',
     preferredTechnology: '',
-    projectScope: ''
+    projectScope: '',
+    visualsVsLogic: '',
+    appInterest: '',
+    collaboration: '',
+    motivation: '',
+    focusArea: ''
   });
 
   const [getRecommendation, { isLoading }] = useGetRecommendationMutation();
@@ -73,7 +78,12 @@ export default function CourseRecommendationForm() {
     careerGoals: ['Research and Analytics', 'Software Architecture', 'Product Design', 'System Administration', 'Mobile Development'],
     priorExperience: ['None', 'Design Tools', 'Programming', 'Data Analysis', 'System Administration'],
     preferredTechnology: ['Web Technologies', 'Mobile Development', 'Cloud Services', 'Data Tools', 'Design Software'],
-    projectScope: ['End-to-End Solutions', 'User Interface', 'Backend Systems', 'Data Analysis', 'Infrastructure']
+    projectScope: ['End-to-End Solutions', 'User Interface', 'Backend Systems', 'Data Analysis', 'Infrastructure'],
+    visualsVsLogic: ['Visuals and Design', 'Logic and Problem-Solving', 'Both'],
+    appInterest: ['Mobile Apps', 'Websites', 'Other'],
+    collaboration: ['Independently', 'With Others', 'Both'],
+    motivation: ['Immediate Results', 'Long-Term Projects', 'Both'],
+    focusArea: ['User Experience', 'Data Analysis', 'Infrastructure', 'Other']
   };
 
   return (
@@ -91,12 +101,12 @@ export default function CourseRecommendationForm() {
               <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">Basic Information</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {['age', 'gradeLevel'].map((name) => (
-          <div key={name}>
+                  <div key={name}>
                     <Label className="block font-medium capitalize mb-2 text-gray-900 dark:text-gray-100">
-              {name.replace(/([A-Z])/g, ' $1')}
+                      {name.replace(/([A-Z])/g, ' $1')}
                     </Label>
                     <Select
-              value={formData[name]}
+                      value={formData[name]}
                       onValueChange={(value) => handleChange(name, value)}
                     >
                       <SelectTrigger className="w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
@@ -112,24 +122,61 @@ export default function CourseRecommendationForm() {
                             >
                               {opt}
                             </SelectItem>
-              ))}
+                          ))}
                         </SelectGroup>
                       </SelectContent>
                     </Select>
-          </div>
-        ))}
-        <div>
+                  </div>
+                ))}
+                <div>
                   <Label className="block font-medium mb-2 text-gray-900 dark:text-gray-100">
-            Your major or field of study
+                    Your major or field of study
                   </Label>
                   <Input
-            type="text"
-            value={formData.major}
+                    type="text"
+                    value={formData.major}
                     onChange={(e) => handleChange('major', e.target.value)}
-            required
+                    required
                     className="w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
                   />
                 </div>
+              </div>
+            </div>
+
+            <Separator />
+
+            {/* New Questions for Better Recommendation */}
+            <div>
+              <h3 className="text-lg font-semibold mb-4 text-gray-900 dark:text-gray-100">About You</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {['visualsVsLogic', 'appInterest', 'collaboration', 'motivation', 'focusArea'].map((name) => (
+                  <div key={name}>
+                    <Label className="block font-medium capitalize mb-2 text-gray-900 dark:text-gray-100">
+                      {name.replace(/([A-Z])/g, ' $1')}
+                    </Label>
+                    <Select
+                      value={formData[name]}
+                      onValueChange={(value) => handleChange(name, value)}
+                    >
+                      <SelectTrigger className="w-full bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+                        <SelectValue placeholder="Select" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectGroup>
+                          {selectOptions[name].map(opt => (
+                            <SelectItem 
+                              key={opt} 
+                              value={opt}
+                              className="text-gray-900 dark:text-gray-100"
+                            >
+                              {opt}
+                            </SelectItem>
+                          ))}
+                        </SelectGroup>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                ))}
               </div>
             </div>
 
@@ -265,14 +312,14 @@ export default function CourseRecommendationForm() {
                   </div>
                 ))}
               </div>
-        </div>
+            </div>
 
             <div className="text-center mt-8">
               <Button
-            type="submit"
+                type="submit"
                 disabled={isLoading}
                 className="bg-[hsl(231,53%,55%)] dark:bg-[hsl(231,33%,45%)] text-white hover:bg-[hsl(231,53%,45%)] dark:hover:bg-[hsl(231,33%,55%)] transition-colors"
-          >
+              >
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -282,10 +329,10 @@ export default function CourseRecommendationForm() {
                   'Get My Recommendation'
                 )}
               </Button>
-        </div>
-      </form>
+            </div>
+          </form>
 
-      {recommendation && (
+          {recommendation && (
             <div className="mt-8 space-y-4">
               <div className="p-6 bg-green-100 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500">
                 <h3 className="text-xl font-bold text-green-800 dark:text-green-200 mb-2">
@@ -297,14 +344,14 @@ export default function CourseRecommendationForm() {
                 <div>
                   <h4 className="font-semibold text-green-800 dark:text-green-200 mb-2">Learning Path:</h4>
                   <ul className="list-disc list-inside text-green-700 dark:text-green-300">
-                    {recommendation.learningPath.map((step, index) => (
+                    {(recommendation?.learningPath || []).map((step, index) => (
                       <li key={index}>{step}</li>
                     ))}
                   </ul>
                 </div>
               </div>
-        </div>
-      )}
+            </div>
+          )}
         </CardContent>
       </Card>
     </div>

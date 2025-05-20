@@ -4,11 +4,13 @@ import { useCreateCheckoutSessionMutation } from "@/features/api/purchaseApi";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { useLoadUserQuery } from "@/features/api/authApi";
+import { useNavigate } from "react-router-dom";
 
 const BuyCourseButton = ({ courseId }) => {
   const [createCheckoutSession, {data, isLoading, isSuccess, isError, error }] =
     useCreateCheckoutSessionMutation();
   const { refetch } = useLoadUserQuery();
+  const navigate = useNavigate();
 
   const purchaseCourseHandler = async () => {
     await createCheckoutSession(courseId);
@@ -32,7 +34,7 @@ const BuyCourseButton = ({ courseId }) => {
     <Button
       disabled={isLoading}
       onClick={purchaseCourseHandler}
-      className="w-full"
+      className="w-full bg-[hsl(231,53%,55%)] hover:bg-[hsl(231,53%,45%)] text-white"
     >
       {isLoading ? (
         <>
@@ -40,7 +42,7 @@ const BuyCourseButton = ({ courseId }) => {
           Please wait
         </>
       ) : (
-        "Enroll"
+        "Enroll Now"
       )}
     </Button>
   );

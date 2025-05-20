@@ -115,6 +115,15 @@ const CourseProgress = () => {
   const handleLectureProgress = async (lectureId) => {
     await updateLectureProgress({ courseId, lectureId });
     refetch();
+    
+    // Check if all lectures are completed
+    const allLecturesCompleted = courseDetails.lectures.every(lecture => 
+      progress.some(p => p.lectureId === lecture._id && p.viewed)
+    );
+    
+    if (allLecturesCompleted && !completed) {
+      await handleCompleteCourse();
+    }
   };
 
   const handleSelectLecture = (lecture) => {
@@ -125,11 +134,23 @@ const CourseProgress = () => {
   };
 
   const handleCompleteCourse = async () => {
-    await completeCourse(courseId);
+    try {
+      await completeCourse(courseId);
+      toast.success("Course completed successfully!");
+      refetch();
+    } catch (error) {
+      toast.error("Failed to mark course as completed");
+    }
   };
 
   const handleInCompleteCourse = async () => {
-    await inCompleteCourse(courseId);
+    try {
+      await inCompleteCourse(courseId);
+      toast.success("Course marked as in progress");
+      refetch();
+    } catch (error) {
+      toast.error("Failed to update course status");
+    }
   };
 
   const handleAnswerSelect = (questionIndex, answer) => {

@@ -14,6 +14,7 @@ import { BadgeInfo, Clock, Lock, PlayCircle, Users } from "lucide-react";
 import React from "react";
 import ReactPlayer from "react-player";
 import { useNavigate, useParams } from "react-router-dom";
+import { toast } from "sonner";
 
 const CourseDetail = () => {
   const params = useParams();
@@ -29,7 +30,9 @@ const CourseDetail = () => {
 
   const handleContinueCourse = () => {
     if(purchased){
-      navigate(`/course-progress/${courseId}`)
+      navigate(`/course-progress/${courseId}`);
+    } else {
+      toast.error("Please enroll in the course first");
     }
   }
 
@@ -144,7 +147,7 @@ const CourseDetail = () => {
               {purchased ? (
                 <Button 
                   onClick={handleContinueCourse} 
-                  className="w-full bg-blue-600 hover:bg-blue-700"
+                  className="w-full bg-[hsl(231,53%,55%)] hover:bg-[hsl(231,53%,45%)] text-white"
                 >
                   Continue Course
                 </Button>

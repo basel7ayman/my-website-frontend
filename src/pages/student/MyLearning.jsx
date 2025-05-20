@@ -11,10 +11,12 @@ const API_BASE = "http://localhost:8080/api/v1/progress";
 
 const MyLearning = () => {
   const { data, isLoading } = useLoadUserQuery();
+  console.log('User data from useLoadUserQuery:', data);
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("in-progress");
   const [progressMap, setProgressMap] = useState({});
   const myLearning = data?.user.enrolledCourses || [];
+  console.log('Enrolled courses:', myLearning);
 
   // Fetch progress for all courses
   useEffect(() => {

@@ -107,101 +107,101 @@ const Login = () => {
         <h1 className="text-3xl font-bold text-center text-[hsl(231,53%,55%)] mb-6">Welcome to Course HUB</h1>
         <Tabs defaultValue="login" className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-4">
-            <TabsTrigger value="signup">Signup</TabsTrigger>
-            <TabsTrigger value="login">Login</TabsTrigger>
-          </TabsList>
-          <TabsContent value="signup">
-            <Card>
-              <CardHeader>
-                <CardTitle>Signup</CardTitle>
-                <CardDescription>
-                  Create a new account and click signup when you're done.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="name">Name</Label>
-                  <Input
-                    type="text"
-                    name="name"
-                    value={signupInput.name}
-                    onChange={(e) => changeInputHandler(e, "signup")}
-                    placeholder="Eg. patel"
+          <TabsTrigger value="signup">Signup</TabsTrigger>
+          <TabsTrigger value="login">Login</TabsTrigger>
+        </TabsList>
+        <TabsContent value="signup">
+          <Card>
+            <CardHeader>
+              <CardTitle>Signup</CardTitle>
+              <CardDescription>
+                Create a new account and click signup when you're done.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <div className="space-y-1">
+                <Label htmlFor="name">Name</Label>
+                <Input
+                  type="text"
+                  name="name"
+                  value={signupInput.name}
+                  onChange={(e) => changeInputHandler(e, "signup")}
+                  placeholder="Eg. patel"
                     required
-                  />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="username">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    value={signupInput.email}
-                    onChange={(e) => changeInputHandler(e, "signup")}
-                    placeholder="Eg. patel@gmail.com"
+                />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="username">Email</Label>
+                <Input
+                  type="email"
+                  name="email"
+                  value={signupInput.email}
+                  onChange={(e) => changeInputHandler(e, "signup")}
+                  placeholder="Eg. patel@gmail.com"
                     required
-                  />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="username">Password</Label>
-                  <Input
-                    type="password"
-                    name="password"
-                    value={signupInput.password}
-                    onChange={(e) => changeInputHandler(e, "signup")}
-                    placeholder="Eg. xyz"
+                />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="username">Password</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  value={signupInput.password}
+                  onChange={(e) => changeInputHandler(e, "signup")}
+                  placeholder="Eg. xyz"
                     required
-                  />
-                </div>
-              </CardContent>
-              <CardFooter>
-                <Button
-                  disabled={registerIsLoading}
-                  onClick={() => handleRegistration("signup")}
+                />
+              </div>
+            </CardContent>
+            <CardFooter>
+              <Button
+                disabled={registerIsLoading}
+                onClick={() => handleRegistration("signup")}
                   className="w-full"
-                >
-                  {registerIsLoading ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please
-                      wait
-                    </>
-                  ) : (
-                    "Signup"
-                  )}
-                </Button>
-              </CardFooter>
-            </Card>
-          </TabsContent>
-          <TabsContent value="login">
-            <Card>
-              <CardHeader>
-                <CardTitle>Login</CardTitle>
-                <CardDescription>
-                  Login your password here. After signup, you'll be logged in.
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="space-y-2">
-                <div className="space-y-1">
-                  <Label htmlFor="current">Email</Label>
-                  <Input
-                    type="email"
-                    name="email"
-                    value={loginInput.email}
-                    onChange={(e) => changeInputHandler(e, "login")}
-                    placeholder="Eg. patel@gmail.com"
+              >
+                {registerIsLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please
+                    wait
+                  </>
+                ) : (
+                  "Signup"
+                )}
+              </Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
+        <TabsContent value="login">
+          <Card>
+            <CardHeader>
+              <CardTitle>Login</CardTitle>
+              <CardDescription>
+                Login your password here. After signup, you'll be logged in.
+              </CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <div className="space-y-1">
+                <Label htmlFor="current">Email</Label>
+                <Input
+                  type="email"
+                  name="email"
+                  value={loginInput.email}
+                  onChange={(e) => changeInputHandler(e, "login")}
+                  placeholder="Eg. patel@gmail.com"
                     required
-                  />
-                </div>
-                <div className="space-y-1">
-                  <Label htmlFor="new">Password</Label>
-                  <Input
-                    type="password"
-                    name="password"
-                    value={loginInput.password}
-                    onChange={(e) => changeInputHandler(e, "login")}
-                    placeholder="Eg. xyz"
+                />
+              </div>
+              <div className="space-y-1">
+                <Label htmlFor="new">Password</Label>
+                <Input
+                  type="password"
+                  name="password"
+                  value={loginInput.password}
+                  onChange={(e) => changeInputHandler(e, "login")}
+                  placeholder="Eg. xyz"
                     required
-                  />
-                </div>
+                />
+              </div>
                 <div className="flex justify-end mt-2">
                   <button
                     type="button"
@@ -211,26 +211,26 @@ const Login = () => {
                     Forgot Password?
                   </button>
                 </div>
-              </CardContent>
-              <CardFooter>
-                <Button
-                  disabled={loginIsLoading}
-                  onClick={() => handleRegistration("login")}
+            </CardContent>
+            <CardFooter>
+              <Button
+                disabled={loginIsLoading}
+                onClick={() => handleRegistration("login")}
                   className="w-full"
-                >
-                  {loginIsLoading ? (
-                    <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please
-                      wait
-                    </>
-                  ) : (
-                    "Login"
-                  )}
-                </Button>
-              </CardFooter>
-            </Card>
-          </TabsContent>
-        </Tabs>
+              >
+                {loginIsLoading ? (
+                  <>
+                    <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Please
+                    wait
+                  </>
+                ) : (
+                  "Login"
+                )}
+              </Button>
+            </CardFooter>
+          </Card>
+        </TabsContent>
+      </Tabs>
         {/* Forgot Password Modal */}
         {showForgotPassword && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40">

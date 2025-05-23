@@ -135,7 +135,7 @@ const CourseProgress = () => {
 
   const handleCompleteCourse = async () => {
     try {
-      await completeCourse(courseId);
+    await completeCourse(courseId);
       toast.success("Course completed successfully!");
       refetch();
     } catch (error) {
@@ -145,7 +145,7 @@ const CourseProgress = () => {
 
   const handleInCompleteCourse = async () => {
     try {
-      await inCompleteCourse(courseId);
+    await inCompleteCourse(courseId);
       toast.success("Course marked as in progress");
       refetch();
     } catch (error) {

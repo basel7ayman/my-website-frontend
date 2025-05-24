@@ -126,30 +126,30 @@ const Login = () => {
                   name="name"
                   value={signupInput.name}
                   onChange={(e) => changeInputHandler(e, "signup")}
-                  placeholder="Eg. patel"
-                    required
+                  placeholder="e.g. John Smith"
+                  required
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="username">Email</Label>
+                <Label htmlFor="email">Email</Label>
                 <Input
                   type="email"
                   name="email"
                   value={signupInput.email}
                   onChange={(e) => changeInputHandler(e, "signup")}
-                  placeholder="Eg. patel@gmail.com"
-                    required
+                  placeholder="e.g. john.smith@example.com"
+                  required
                 />
               </div>
               <div className="space-y-1">
-                <Label htmlFor="username">Password</Label>
+                <Label htmlFor="password">Password</Label>
                 <Input
                   type="password"
                   name="password"
                   value={signupInput.password}
                   onChange={(e) => changeInputHandler(e, "signup")}
-                  placeholder="Eg. xyz"
-                    required
+                  placeholder="e.g. StrongP@ssw0rd123"
+                  required
                 />
               </div>
             </CardContent>
@@ -187,8 +187,8 @@ const Login = () => {
                   name="email"
                   value={loginInput.email}
                   onChange={(e) => changeInputHandler(e, "login")}
-                  placeholder="Eg. patel@gmail.com"
-                    required
+                  placeholder="e.g. john.smith@example.com"
+                  required
                 />
               </div>
               <div className="space-y-1">
@@ -198,8 +198,8 @@ const Login = () => {
                   name="password"
                   value={loginInput.password}
                   onChange={(e) => changeInputHandler(e, "login")}
-                  placeholder="Eg. xyz"
-                    required
+                  placeholder="e.g. StrongP@ssw0rd123"
+                  required
                 />
               </div>
                 <div className="flex justify-end mt-2">

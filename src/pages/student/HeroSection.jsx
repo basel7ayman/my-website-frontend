@@ -53,7 +53,7 @@ const HeroSection = () => {
               onClick={() => navigate('/gamification')}
               className="bg-white dark:bg-gray-800 text-[hsl(231,53%,55%)] dark:text-[hsl(231,33%,55%)] rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 px-8 py-3"
             >
-              Gamification
+              View Scoreboard
             </Button>
           </div>
         </div>

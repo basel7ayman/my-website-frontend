@@ -117,7 +117,7 @@ const Navbar = () => {
                       : 'text-[hsl(231,53%,55%)] hover:text-[hsl(231,53%,45%)] dark:text-white'
                   }`}
                 >
-                  My Learning
+                  Progress
                 </Link>
               </li>
               <li>
@@ -129,7 +129,7 @@ const Navbar = () => {
                       : 'text-[hsl(231,53%,55%)] hover:text-[hsl(231,53%,45%)] dark:text-white'
                   }`}
                 >
-                  Gamification
+                  Scoreboard
                 </Link>
               </li>
               <li>
@@ -270,14 +270,14 @@ const MobileNavbar = ({ setMobileMenuOpen }) => {
             onClick={() => setMobileMenuOpen(false)}
             className="text-[hsl(231,53%,55%)] hover:text-[hsl(231,53%,45%)] dark:text-white transition-colors duration-200"
           >
-            My Learning
+            Progress
           </Link>
           <Link 
             to="/gamification" 
             onClick={() => setMobileMenuOpen(false)}
             className="text-[hsl(231,53%,55%)] hover:text-[hsl(231,53%,45%)] dark:text-white transition-colors duration-200"
           >
-            Gamification
+            Scoreboard
           </Link>
           <Link 
             to="/CourseRecommendationForm" 

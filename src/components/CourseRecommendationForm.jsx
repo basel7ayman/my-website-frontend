@@ -642,14 +642,14 @@ export default function CourseRecommendationForm() {
                     ))}
                   </ul>
                 </div>
-                <div className="mt-4">
+                {/* <div className="mt-4">
                   <h4 className="font-semibold text-green-800 dark:text-green-200 mb-2">Track Points:</h4>
                   <ul className="text-green-700 dark:text-green-300">
                     {Object.entries(recommendation.points).map(([track, points]) => (
                       <li key={track}>{track}: {points} points</li>
                     ))}
                   </ul>
-                </div>
+                </div> */}
               </div>
             </div>
           )}

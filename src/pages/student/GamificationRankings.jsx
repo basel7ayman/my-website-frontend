@@ -8,12 +8,7 @@ const GamificationRankings = () => {
     const { data, isLoading, error } = useGetRankingsQuery();
     const { user } = useSelector((state) => state.auth);
 
-    // Static streak data
-    const streakData = {
-        currentStreak: 5,
-        longestStreak: 12,
-        lastQuizDate: "2024-03-20"
-    };
+    
 
     if (isLoading) return <div>Loading rankings...</div>;
     if (error) return <div>Error loading rankings</div>;
@@ -86,42 +81,6 @@ const GamificationRankings = () => {
 
     return (
         <div className="container mx-auto py-8 px-4">
-            {/* Streak Counter */}
-            <div className="max-w-2xl mx-auto mb-8">
-                <Card className="border-2 border-orange-500 bg-orange-50 dark:bg-orange-900/20">
-                    <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-                        <CardTitle className="text-2xl font-bold text-orange-700 dark:text-orange-400">
-                            Quiz Streak
-                        </CardTitle>
-                        <div className="flex items-center gap-2">
-                            <Flame className="h-6 w-6 text-orange-500" />
-                            <span className="text-2xl font-bold text-orange-700 dark:text-orange-400">
-                                {streakData.currentStreak}
-                            </span>
-                        </div>
-                    </CardHeader>
-                    <CardContent>
-                        <div className="flex justify-between items-center">
-                            <div>
-                                <p className="text-sm text-orange-600 dark:text-orange-300">
-                                    Current Streak: {streakData.currentStreak} days
-                                </p>
-                                <p className="text-sm text-orange-600 dark:text-orange-300">
-                                    Longest Streak: {streakData.longestStreak} days
-                                </p>
-                            </div>
-                            <div className="text-right">
-                                <p className="text-sm text-orange-600 dark:text-orange-300">
-                                    Last Quiz: {streakData.lastQuizDate}
-                                </p>
-                                <p className="text-sm text-orange-600 dark:text-orange-300">
-                                    Keep it up! 🔥
-                                </p>
-                            </div>
-                        </div>
-                    </CardContent>
-                </Card>
-            </div>
 
             <h1 className="text-3xl font-bold mb-8 text-center">Student Rankings</h1>
             <div className="grid grid-cols-1 gap-6 max-w-2xl mx-auto">

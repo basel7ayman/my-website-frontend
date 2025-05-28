@@ -55,7 +55,12 @@ export default function CourseRecommendationForm() {
       toast.success('Recommendation generated successfully!');
     } catch (err) {
       console.error('Recommendation fetch failed:', err);
-      toast.error('Failed to get recommendation. Please try again.');
+      toast.error(
+        err?.data?.message ||
+        err?.error ||
+        err?.message ||
+        'Failed to get recommendation. Please try again.'
+      );
     }
   };
 

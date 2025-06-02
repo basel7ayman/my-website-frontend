@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const RECOMMENDATION_API = "http://localhost:8080/api/v1/recommendation";
+const RECOMMENDATION_API = "https://my-website-backend-5134.onrender.com/api/v1/recommendation";
 
 export const recommendationApi = createApi({
   reducerPath: "recommendationApi",

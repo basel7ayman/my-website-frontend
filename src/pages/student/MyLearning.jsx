@@ -7,7 +7,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { useNavigate } from "react-router-dom";
 import { PlayCircle, CheckCircle2, Clock, BookOpen } from "lucide-react";
 
-const API_BASE = "http://localhost:8080/api/v1/progress";
+const API_BASE = "https://my-website-backend-5134.onrender.com/api/v1/progress";
 
 const MyLearning = () => {
   const { data, isLoading } = useLoadUserQuery();

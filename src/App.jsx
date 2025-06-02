@@ -52,7 +52,6 @@ const appRouter = createBrowserRouter([
           <>
             <HeroSection />
             <div className="container mx-auto px-4 py-12">
-              <h2 className="text-3xl font-bold mb-8 text-center text-[hsl(231,53%,55%)]">Course HUB Featured Courses</h2>
               <Courses />
             </div>
           </>
@@ -65,7 +64,6 @@ const appRouter = createBrowserRouter([
           <>
             <HeroSection />
             <div className="container mx-auto px-4 py-12">
-              <h2 className="text-3xl font-bold mb-8 text-center text-[hsl(231,53%,55%)]">Course HUB Featured Courses</h2>
               <Courses />
             </div>
           </>

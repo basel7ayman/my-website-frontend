@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./App.css";
 import Login from "./pages/Login";
@@ -37,14 +38,12 @@ const BASENAME = import.meta.env.PROD ? "/my-website-frontend" : "/";
 const appRouter = createBrowserRouter([
   {
     path: "/",
-    errorElement: <ErrorPage/>,
+    errorElement: <ErrorPage />,
     element: <MainLayout />,
     children: [
       {
         path: "*",
-        element:(
-          <ErrorPage/>
-        )
+        element: <ErrorPage />,
       },
       {
         path: "/my-website-frontend",
@@ -56,7 +55,6 @@ const appRouter = createBrowserRouter([
             </div>
           </>
         ),
-
       },
       {
         path: "/",
@@ -134,7 +132,7 @@ const appRouter = createBrowserRouter([
         element: (
           <ProtectedRoute>
             <PurchaseCourseProtectedRoute>
-            <CourseProgress />
+              <CourseProgress />
             </PurchaseCourseProtectedRoute>
           </ProtectedRoute>
         ),
@@ -143,12 +141,10 @@ const appRouter = createBrowserRouter([
         path: "CourseRecommendationForm",
         element: (
           <ProtectedRoute>
-            <CourseRecommendationForm/>
+            <CourseRecommendationForm />
           </ProtectedRoute>
-          ),
+        ),
       },
-
-      // admin routes start from here
       {
         path: "admin",
         element: (
@@ -188,6 +184,15 @@ const appRouter = createBrowserRouter([
 ], { basename: BASENAME });
 
 function App() {
+  // ✅ GitHub Pages redirect fix
+  useEffect(() => {
+    const redirectPath = sessionStorage.redirect;
+    delete sessionStorage.redirect;
+    if (redirectPath) {
+      window.history.replaceState(null, "", redirectPath);
+    }
+  }, []);
+
   return (
     <Provider store={appStore}>
       <main>

@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://basel7ayman.github.io/my-website-frontend",
+  "homepage": "https://basel7ayman.github.io/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

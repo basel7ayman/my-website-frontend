@@ -15,6 +15,8 @@ import React from "react";
 import ReactPlayer from "react-player";
 import { useNavigate, useParams } from "react-router-dom";
 import { toast } from "sonner";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import ErrorPage from "../ErrorPage";
 
 const CourseDetail = () => {
   const params = useParams();
@@ -23,8 +25,8 @@ const CourseDetail = () => {
   const { data, isLoading, isError } =
     useGetCourseDetailWithStatusQuery(courseId);
 
-  if (isLoading) return <h1>Loading...</h1>;
-  if (isError) return <h>Failed to load course details</h>;
+  if (isLoading) return <LoadingSpinner />;
+  if (isError) return <ErrorPage />;
 
   const { course, purchased } = data;
 

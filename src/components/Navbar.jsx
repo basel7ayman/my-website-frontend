@@ -63,15 +63,15 @@ const Navbar = () => {
         scrolled ? 'bg-[hsl(231,53%,55%)] shadow-lg' : 'bg-transparent'
       }`}
       style={{ 
-        width: 'calc(100% - var(--scrollbar-width, 0px))',
+        width: '100%',
       }}
     >
-      <div className={`max-w-7xl flex items-center justify-between mx-auto px-4 pt-1 ${scrolled ? 'pb-1' : 'pb-3'}`}>
+      <div className={`max-w-7xl flex items-center justify-between mx-auto px-4 pt-1 `}>
         {/* Logo and Brand */}
         <Link to="/" className="flex items-center space-x-3 ml-2">
-          <span className={`inline-flex items-center rounded-xl p-2 transition-colors ${scrolled ? 'bg-white' : 'bg-transparent'}`}>
+          <span className={`inline-flex items-center rounded-xl p-2 transition-colors `}>
             <img src={logo} className="h-11" alt="coursehub logo" />
-            <span className="ml-2 text-2xl font-semibold whitespace-nowrap transition-colors duration-300 text-[hsl(231,53%,55%)]">
+            <span className={` ml-2 text-2xl font-semibold whitespace-nowrap transition-colors duration-300 ${scrolled ? 'text-[hsl(224,24%,13%)]' : 'text-[hsl(231,53%,55%)]'}`}>
               Course <span className="font-bold text-green-600">HUB</span>
             </span>
           </span>
@@ -81,7 +81,7 @@ const Navbar = () => {
         <button
           type="button"
           onClick={() => setMobileMenuOpen((prev) => !prev)}
-          className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg md:hidden focus:outline-none transition-colors duration-300 ${
+          className={`inline-flex items-center p-2 w-10 h-10 justify-center text-sm rounded-lg lg:hidden focus:outline-none transition-colors duration-300 ${
             scrolled 
               ? 'text-white hover:bg-white/10' 
               : 'text-[hsl(231,53%,55%)] hover:bg-[hsl(231,53%,55%)]/10 dark:text-white'
@@ -93,7 +93,7 @@ const Navbar = () => {
         </button>
 
         {/* Desktop menu */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-8">
           {user ? (
             <ul className="flex items-center gap-8">
               <li>
@@ -229,7 +229,13 @@ const Navbar = () => {
 
           {/* Dark Mode Toggle */}
           <div className="ml-2">
-            <DarkMode />
+            <DarkMode 
+              buttonBg={scrolled 
+                ? (isDark ? 'bg-[#1e293b]' : 'bg-[hsl(231,53%,45%)]') 
+                : (isDark ? 'bg-[#1e293b]' : 'bg-white')
+              }
+              buttonText={scrolled ? 'text-white' : (isDark ? 'text-white' : 'text-[hsl(231,53%,55%)]')}
+            />
           </div>
         </div>
 

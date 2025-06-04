@@ -4,12 +4,15 @@ import Course from "./Course";
 import { useGetPublishedCourseQuery } from "@/features/api/courseApi";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
- 
+import LoadingSpinner from "@/components/LoadingSpinner";
+import ErrorPage from "../ErrorPage";
+
 const Courses = () => {
   const {data, isLoading, isError} = useGetPublishedCourseQuery();
   const navigate = useNavigate();
  
-  if(isError) return <h1>Some error occurred while fetching courses.</h1>
+  if(isError) return <ErrorPage />;
+  if(isLoading) return <LoadingSpinner />;
 
   // Get one course from each category
   const getFeaturedCourses = (courses) => {

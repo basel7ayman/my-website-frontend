@@ -4,7 +4,7 @@ import { useGetRankingsQuery } from "@/features/api/gamificationApi";
 import ErrorPage from "@/pages/ErrorPage";
 
 const GamificationPage = () => {
-    const { isLoading } = useGetRankingsQuery();
+    const { isLoading, isError } = useGetRankingsQuery();
     if (isLoading) return <LoadingSpinner />;
     if (isError) return <ErrorPage />;
 

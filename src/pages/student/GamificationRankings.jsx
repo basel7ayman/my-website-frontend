@@ -3,15 +3,17 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Trophy, Medal, Award, Crown, Gem, Flame } from "lucide-react";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { useSelector } from "react-redux";
+import LoadingSpinner from "@/components/LoadingSpinner";
+import ErrorPage from "../ErrorPage";
 
 const GamificationRankings = () => {
-    const { data, isLoading, error } = useGetRankingsQuery();
+    const { data, isLoading, isError } = useGetRankingsQuery();
     const { user } = useSelector((state) => state.auth);
 
     
 
-    if (isLoading) return <div>Loading rankings...</div>;
-    if (error) return <div>Error loading rankings</div>;
+    if (isLoading) return <LoadingSpinner />;
+    if (isError) return <ErrorPage />;
 
     const getLevelIcon = (level) => {
         switch (level) {
@@ -156,7 +158,8 @@ const GamificationRankings = () => {
                             ...student,
                             level: level.level
                         })))
-                        .filter(student => student.totalScore === 0);
+                        .filter(student => student.totalScore === 0)
+                        .sort((a, b) => a.rank - b.rank);
                     if (zeroScoreStudents.length === 0) return null;
                     return (
                         <Card className="border-2 border-gray-400 bg-gray-50 dark:bg-gray-800/20">
